@@ -1,2 +1,4 @@
 *.token
 votes.json
+.vscode/
+.env
