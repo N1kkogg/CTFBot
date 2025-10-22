@@ -15,6 +15,12 @@ ANNOUNCEMENTS_CHANNEL_ID = int(os.getenv("ANNOUNCEMENTS_CHANNEL_ID"))
 
 bot = interactions.Client()
 
+
+@interactions.listen()
+async def on_startup():
+    print("CTFBOT is ready!")
+    await bot.change_presence(interactions.Status.ONLINE, interactions.Activity("competing on CTFTIME", interactions.ActivityType.COMPETING))
+
 @interactions.slash_command(name="ctfinfo", description="Get more information about a CTF event")
 @interactions.slash_option(
     name="eventid",
