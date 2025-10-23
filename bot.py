@@ -207,7 +207,7 @@ async def upcoming(ctx):
 async def add_ctf_channels(ctx, ctf_name: str, headers: bool=True, announce: bool=True):
   if ctx.user.id == OWNER_ID:
 
-    channels = ["flag-feedback", "general", "web", "crypto", "pwn", "rev", "forensics", "misc"]
+    channels = ["ctf-updates", "general", "web", "crypto", "pwn", "rev", "forensics", "misc"]
 
     await ctx.send(f"added new CTF category: {ctf_name}", ephemeral=True)
     category = await ctx.guild.create_category(ctf_name)
@@ -226,12 +226,13 @@ async def add_ctf_channels(ctx, ctf_name: str, headers: bool=True, announce: boo
     if headers:
         for chann in category.channels:
             if chann.name == channels[0]:
-               await chann.send(f"🔥 This is the FLAG FEEDBACK channel for {ctf_name}! 🚩💻\n\n"
-                                f"here <@{RESET_LEADERBOARD_ID}> will send the claimed flag from the current CTF.\n\n"
-                                 "**You can claim a flag with /flag NAME_OF_THE_CHALLENGE_HERE.**\n\n"
+               await chann.send(f"🔥 This is the CTF UPDATES channel for {ctf_name}! 🚩💻\n\n"
+                                f"here <@{RESET_LEADERBOARD_ID}> will send the **attendance and flags** for the current CTF.\n\n"
+                                 "**You can claim a flag with `/flag NAME_OF_THE_CHALLENGE_HERE`.**\n\n"
+                                 "*if you actively collaborated to a challenge with another user, you can claim the flag too with this format --> `/flag NAME_OF_THE_CHALLENGE_HERE (Collaborator)`.*\n\n"
                                 "*please do not spam the bot with fake solved challenges🙏*\n"
                                 "--------------------------w---")
-               
+
             elif chann.name == channels[1]:
                 await chann.send(f"🌐 Welcome to the General CTF Channel for {ctf_name}! 🏴‍☠️💻\n\n"
                                 "here you can talk about pretty much everything (please keep it related to the ctf though 🙏) and please don't share flags here\n"
