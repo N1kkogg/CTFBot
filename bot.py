@@ -231,7 +231,7 @@ async def add_ctf_channels(ctx, ctf_name: str, headers: bool=True, announce: boo
                                  "**You can claim a flag with `/flag NAME_OF_THE_CHALLENGE_HERE`.**\n\n"
                                  "*if you actively collaborated to a challenge with another user, you can claim the flag too with this format --> `/flag NAME_OF_THE_CHALLENGE_HERE (Collaborator)`.*\n\n"
                                 "*please do not spam the bot with fake solved challenges🙏*\n"
-                                "--------------------------w---")
+                                "-----------------------------")
 
             elif chann.name == channels[1]:
                 await chann.send(f"🌐 Welcome to the General CTF Channel for {ctf_name}! 🏴‍☠️💻\n\n"
