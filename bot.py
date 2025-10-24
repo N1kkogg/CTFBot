@@ -124,7 +124,7 @@ async def upcoming(ctx):
     seven_days = seven_days.timestamp()
 
     r = requests.get(
-        "https://ctftime.org/api/v1/events/?limit=100"
+        "https://ctftime.org/api/v1/events/?limit=8"
         + "&start="
         + str(int(now))
         + "&finish="
