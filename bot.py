@@ -210,15 +210,14 @@ async def add_ctf_channels(ctx, ctf_name: str, headers: bool=True, announce: boo
     channels = ["ctf-updates", "general", "web", "crypto", "pwn", "rev", "forensics", "misc"]
 
     await ctx.send(f"added new CTF category: {ctf_name}", ephemeral=True)
-    category = await ctx.guild.create_category(ctf_name)
+    overwrite = interactions.PermissionOverwrite(
+        id=1433509615940800562, 
+        type=0,  # 0 = role, 1 = member
+        deny=interactions.Permissions.VIEW_CHANNEL
+    )
+    category = await ctx.guild.create_category(ctf_name, permission_overwrites=overwrite)
     for idx, chann in enumerate(channels):
         if idx == 0:
-            #overwrite = interactions.PermissionOverwrite(
-            #    id=ctx.guild.default_role.id,
-            #    type=0,  # 0 = role, 1 = member
-            #    allow=interactions.Permissions.VIEW_CHANNEL,
-            #    deny=interactions.Permissions.SEND_MESSAGES
-            #)
             await ctx.guild.create_text_channel(chann, category=category)
         else:
             await ctx.guild.create_text_channel(chann, category=category)
